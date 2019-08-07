@@ -10,9 +10,12 @@ It's composed of:
 
   Published at Github as `rafabene/ms4demo:java`
 
+   Check [Hello's README file](/hello/README.md) for more details about how to execute this microservice.
 
 - [Ola Microservice](/ola)
   
   Implemented using [NodeJS](https://nodejs.org)/[ExpressJS](https://expressjs.com)
 
   Published at Github as `rafabene/ms4demo:node`
+
+   Check [Ola's README file](/ola/README.md) for more details about how to execute this microservice.
