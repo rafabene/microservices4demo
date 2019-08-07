@@ -16,6 +16,6 @@ It's composed of:
   
   Implemented using [NodeJS](https://nodejs.org)/[ExpressJS](https://expressjs.com)
 
-  Published at Github as `rafabene/ms4demo:node`
+  Published at Github as `rafabene/ms4demo:node-v1` and `rafabene/ms4demo:node-v2`
 
    Check [Ola's README file](/ola/README.md) for more details about how to execute this microservice.
