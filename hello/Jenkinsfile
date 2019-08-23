@@ -34,7 +34,7 @@ spec:
         
             stage ('Maven native build'){
                 echo 'Building native binary'
-                dir('webstore') {
+                dir('hello') {
                     sh 'mvn package -Pnative -DskipTests'
                 }       
             }
@@ -42,7 +42,7 @@ spec:
             stage ('Docker image build'){
                 echo 'Building docker image'
                 dir('hello') {
-                    sh 'docker build -t rafabene/cloudnative -f src/main/docker/Dockerfile.native .'
+                    sh 'docker build -t rafabene/hello -f src/main/docker/Dockerfile.native .'
                 }       
             }
 
@@ -62,7 +62,7 @@ spec:
                 dir('hello') {
                     sh 'kubectl apply -f Deployment.yaml'
                     sh 'kubectl apply -f Service.yaml'
-                    sh """kubectl patch deployment cloudnative -p '{"spec":{"template":{"metadata":{"labels":{ "build": "${env.BUILD_NUMBER}"}}}}}' """
+                    sh """kubectl patch deployment hello -p '{"spec":{"template":{"metadata":{"labels":{ "build": "${env.BUILD_NUMBER}"}}}}}' """
                 }       
             }
         }    
