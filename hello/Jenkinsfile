@@ -60,10 +60,10 @@ spec:
             stage ('Deploy'){
                 echo 'Building native binary'
                 dir('hello') {
-                    sh 'kubectl create namespace microservices || echo "Namespace \"microservices\" already existes"'
+                    sh 'kubectl create namespace microservices || echo "Namespace \"microservices\" already exists"'
                     sh 'kubectl apply -f kubernetes/deployment.yaml'
                     sh 'kubectl apply -f kubernetes/service.yaml'
-                    sh """kubectl patch deployment hello -p '{"spec":{"template":{"metadata":{"labels":{ "build": "${env.BUILD_NUMBER}"}}}}}' """
+                    sh """kubectl patch deployment hello -n cicd -p '{"spec":{"template":{"metadata":{"labels":{ "build": "${env.BUILD_NUMBER}"}}}}}' """
                 }       
             }
         }    
