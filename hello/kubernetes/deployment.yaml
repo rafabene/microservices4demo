@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: microservices
+  name: hello
+  labels:
+    app: hello
+    demo: cicd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+      - name: hello
+        image: rafabene/hello
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 100m
+        ports:
+        - containerPort: 8080

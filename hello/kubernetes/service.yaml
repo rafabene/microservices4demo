@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: microservices
+  name: hello
+  demo: cicd
+spec:
+  selector:
+    app: hello
+  type: NodePort
+  ports:
+  - protocol: TCP
+    name: default-port
+    port: 8080
+    targetPort: 8080
