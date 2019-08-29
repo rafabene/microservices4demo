@@ -13,7 +13,7 @@ spec:
     - name: dockersock
       mountPath: /var/run/docker.sock
     - name: m2
-      mountPath: /home/jenkins/.m2
+      mountPath: /root/.m2
   volumes:
   - name: dockersock
     hostPath:
