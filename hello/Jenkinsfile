@@ -63,7 +63,7 @@ spec:
                     sh 'kubectl create namespace microservices || echo "Namespace \"microservices\" already exists"'
                     sh 'kubectl apply -f kubernetes/deployment.yaml'
                     sh 'kubectl apply -f kubernetes/service.yaml'
-                    sh """kubectl patch deployment hello -n cicd -p '{"spec":{"template":{"metadata":{"labels":{ "build": "${env.BUILD_NUMBER}"}}}}}' """
+                    sh """kubectl patch deployment hello -n microservices -p '{"spec":{"template":{"metadata":{"labels":{ "build": "${env.BUILD_NUMBER}"}}}}}' """
                 }       
             }
         }    
