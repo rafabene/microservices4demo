@@ -35,14 +35,14 @@ spec:
             stage ('Maven native build'){
                 echo 'Building native binary'
                 dir('hello') {
-                    sh 'mvn package -DskipTests'
+                    sh 'mvn package -Pnative -DskipTests'
                 }       
             }
 
             stage ('Docker image build'){
                 echo 'Building docker image'
                 dir('hello') {
-                    sh 'docker build -t rafabene/hello -f src/main/docker/Dockerfile.jvm .'
+                    sh 'docker build -t rafabene/hello -f src/main/docker/Dockerfile.native .'
                 }       
             }
 
