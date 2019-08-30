@@ -32,8 +32,8 @@ spec:
                 git poll: true, url: 'https://github.com/rafabene/microservices4demo'
             }
         
-            stage ('Maven native build'){
-                echo 'Building native binary'
+            stage ('Maven JVM build'){
+                echo 'Building jar file'
                 dir('hello') {
                     sh 'mvn package -DskipTests'
                 }       
