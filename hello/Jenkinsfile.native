@@ -1,11 +1,11 @@
-podTemplate(label: "mymaven", 
+podTemplate(label: "mymaven-native", 
 yaml: """
 apiVersion: v1
 kind: Pod
 spec:
   containers:
   - name: maven
-    image: rafabene/jenkins-slave
+    image: rafabene/jenkins-slave-native
     imagePullPolicy: IfNotPresent
     tty: true
     command: ["cat"]
@@ -24,7 +24,7 @@ spec:
 """
   ) {
     properties([pipelineTriggers([pollSCM('*/1 * * * * ')])])
-    node ("mymaven"){
+    node ("mymaven-native"){
         
         container("maven"){
            stage ('SCM checkout'){
