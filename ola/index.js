@@ -24,6 +24,7 @@ app.get ('/behave', function(request, response) {
 
 
 function root (req, res){
+    res.set('Connection', 'close')
     if (misbehave) {
         res.status(503).send(`Ola ${version} FAILS(503) from "${os.hostname}"`)
     } else {
