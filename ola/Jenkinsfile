@@ -42,7 +42,7 @@ spec:
             stage ('Docker image build'){
                 echo 'Building docker image'
                 dir('ola') {
-                    sh 'docker build -t rafabene/ms4demo:node -f src/main/docker/Dockerfile.jvm .'
+                    sh 'docker build -t rafabene/ms4demo:node .'
                 }       
             }
 
