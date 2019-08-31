@@ -9,7 +9,7 @@ metadata:
 spec:
   selector:
     app: ola
-  type: NodePort
+  type: ClusterIP
   ports:
   - protocol: TCP
     name: default-port
