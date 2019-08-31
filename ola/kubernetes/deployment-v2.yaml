@@ -2,23 +2,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: microservices
-  name: hello
+  name: ola-v2
   labels:
-    app: hello
+    app: ola
+    version: v2
     demo: cicd
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hello
+      app: ola
   template:
     metadata:
       labels:
-        app: hello
+        app: ola
+        version: v2
     spec:
       containers:
-      - name: hello
-        image: rafabene/ms4demo:java
+      - name: ola
+        image: rafabene/ms4demo:node
+        env:
+        - name: VERSION
+          value: "V2"
         imagePullPolicy: IfNotPresent
         resources:
           requests:

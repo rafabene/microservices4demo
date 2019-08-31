@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 const os = require('os')
-const version = "V1"
+const version = (process.env.VERSION == undefined ? "V1" : process.env.VERSION )
 let cont = 0
 let misbehave= false
 

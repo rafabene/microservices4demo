@@ -42,12 +42,12 @@ spec:
             stage ('Docker image build'){
                 echo 'Building docker image'
                 dir('hello') {
-                    sh 'docker build -t rafabene/hello -f src/main/docker/Dockerfile.jvm .'
+                    sh 'docker build -t rafabene/ms4demo:java -f src/main/docker/Dockerfile.jvm .'
                 }       
             }
 
             stage ('Perform Tests'){
-                echo 'Building native binary'
+                echo 'Run tests'
                 dir('hello') {
                     sh 'mvn test'
                 }       

@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  namespace: microservices
+  name: ola
+  labels:
+    app: ola
+    demo: cicd
+spec:
+  selector:
+    app: ola
+  type: NodePort
+  ports:
+  - protocol: TCP
+    name: default-port
+    port: 3000
+    targetPort: 3000
