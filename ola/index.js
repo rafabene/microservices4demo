@@ -10,7 +10,7 @@ app.get('/health', function (req, res){
     res.json({status: 'UP'})
 })
 
-app.get('/', root)
+app.get('/', [logHeaders, root])
 
 app.get('/misbehave', function(request, response) {
     misbehave = true;
@@ -22,6 +22,10 @@ app.get ('/behave', function(request, response) {
     response.send("Following requests to '/' will return a 200\n");
 });
 
+function logHeaders(req, res, next){
+    console.log('Request headers: ' + JSON.stringify(req.headers));
+    next();
+}
 
 function root (req, res){
     res.set('Connection', 'close')
