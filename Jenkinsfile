@@ -30,7 +30,7 @@ spec:
         choice(name: 'JAVA_BUILD_TYPE', choices: ['JVM', 'Native'], description: 'Type of Quarkus build?')
     }
     triggers {
-        pollSCM('*/5 * * * * ')
+        pollSCM('*/1 * * * * ')
     }
     stages {
        stage ('SCM checkout'){
