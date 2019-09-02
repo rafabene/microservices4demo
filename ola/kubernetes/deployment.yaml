@@ -12,6 +12,7 @@ spec:
   selector:
     matchLabels:
       app: ola
+      version: v1
   template:
     metadata:
       labels:
@@ -22,8 +23,3 @@ spec:
       - name: ola
         image: rafabene/ms4demo:node
         imagePullPolicy: IfNotPresent
-        resources:
-          requests:
-            cpu: 100m
-        ports:
-        - containerPort: 8080

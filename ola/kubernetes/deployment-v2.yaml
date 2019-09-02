@@ -12,6 +12,7 @@ spec:
   selector:
     matchLabels:
       app: ola
+      version: v2
   template:
     metadata:
       labels:
@@ -25,8 +26,3 @@ spec:
         - name: VERSION
           value: "V2"
         imagePullPolicy: IfNotPresent
-        resources:
-          requests:
-            cpu: 100m
-        ports:
-        - containerPort: 8080
