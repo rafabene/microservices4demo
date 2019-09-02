@@ -22,7 +22,7 @@ spec:
       path: /var/run/docker.sock
   - name: m2
     hostPath:
-      path: /tmp/m2
+      path: /vagrant/m2
 """)
     }
     
