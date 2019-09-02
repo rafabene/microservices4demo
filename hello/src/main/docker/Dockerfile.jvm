@@ -17,6 +17,11 @@
 FROM fabric8/java-alpine-openjdk8-jre
 ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
 ENV AB_ENABLED=jmx_exporter
+ENV JAEGER_SERVICE_NAME=hello\
+  JAEGER_ENDPOINT=http://jaeger-collector.istio-system.svc:14268/api/traces\
+  JAEGER_PROPAGATION=b3\
+  JAEGER_SAMPLER_TYPE=const\
+  JAEGER_SAMPLER_PARAM=1
 COPY target/lib/* /deployments/lib/
 COPY target/*-runner.jar /deployments/app.jar
 ENTRYPOINT [ "/deployments/run-java.sh" ]
