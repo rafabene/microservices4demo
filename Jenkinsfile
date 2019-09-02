@@ -161,7 +161,7 @@ spec:
                     sh 'kubectl apply -f ola/kubernetes/deployment-v2.yaml'
                     sh 'kubectl apply -f hello/kubernetes/service.yaml'
                     sh 'kubectl apply -f ola/kubernetes/service.yaml'
-                    sh 'kubectl apply -f hello/kubernetes/gateway.yaml'
+                    sh 'kubectl apply -f hello/kubernetes/gateway.yaml || echo "Istio not installed'
                     sh """kubectl patch deployment hello -n microservices -p '{"spec":{"template":{"metadata":{"labels":{ "build": "${env.BUILD_NUMBER}"}}}}}' """
                     sh """kubectl patch deployment ola-v1 -n microservices -p '{"spec":{"template":{"metadata":{"labels":{ "build": "${env.BUILD_NUMBER}"}}}}}' """
                     sh """kubectl patch deployment ola-v2 -n microservices -p '{"spec":{"template":{"metadata":{"labels":{ "build": "${env.BUILD_NUMBER}"}}}}}' """
