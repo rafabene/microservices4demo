@@ -23,8 +23,7 @@ spec:
         - name: org_acme_quarkus_sample_OlaService_mp_rest_url
           value: "http://ola:3000"
         imagePullPolicy: IfNotPresent
-        resources:
-          requests:
-            cpu: 100m
         ports:
         - containerPort: 8080
+          name: http-8080
+          protocol: TCP

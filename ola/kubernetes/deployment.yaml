@@ -25,5 +25,5 @@ spec:
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
-          name: http
+          name: http-3000
           protocol: TCP
