@@ -23,7 +23,7 @@ app.get ('/behave', function(request, response) {
 });
 
 function logHeaders(req, res, next){
-    console.log('Request headers: ' + JSON.stringify(req.headers));
+    console.log('Request received - Headers: ' + JSON.stringify(req.headers));
     next();
 }
 
