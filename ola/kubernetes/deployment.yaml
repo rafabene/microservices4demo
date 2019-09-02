@@ -23,3 +23,7 @@ spec:
       - name: ola
         image: rafabene/ms4demo:node
         imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
