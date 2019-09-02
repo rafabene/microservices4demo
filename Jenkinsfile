@@ -35,7 +35,7 @@ spec:
        stage ('SCM checkout'){
             steps{
                 echo 'Checking out git repository'
-                git poll: true, url: 'https://github.com/rafabene/microservices4demo', branch: 'master'
+                checkout scm
            }
         }
         stage ('Build both microservices'){
