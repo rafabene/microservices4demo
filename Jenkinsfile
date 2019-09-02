@@ -25,6 +25,9 @@ spec:
       path: /vagrant/m2
 """)
     }
+    parameters {
+        choice(name: 'JAVA_BUILD_TYPE', choices: ['JVM', 'Native'], description: 'Type of Quarkus build?')
+    }
     triggers {
         pollSCM('*/1 * * * * ')
     }
@@ -49,6 +52,19 @@ spec:
                                 }
                             }
                         }
+                        stage('Maven native build'){
+                            when{
+                                expression { params.JAVA_BUILD_TYPE == 'Native' }
+                            }
+                            steps{
+                                container('slave'){
+                                    echo 'Building native Java application using maven'
+                                    dir('hello'){
+                                        sh 'mvn package -Pnative -DskipTests'
+                                    }
+                                }
+                            }
+                        }
                         stage('Docker build'){
                             when{
                                 expression { params.JAVA_BUILD_TYPE == 'JVM' }
@@ -58,6 +74,19 @@ spec:
                                     echo "Building docker image"
                                     dir('hello'){
                                         sh 'docker build -f src/main/docker/Dockerfile.jvm -t rafabene/ms4demo:java .'
+                                    }
+                                }
+                            }
+                        }
+                        stage('Docker build with native binary'){
+                            when{
+                                expression { params.JAVA_BUILD_TYPE == 'Native' }
+                            }
+                            steps{
+                                container('slave'){
+                                    echo "Building docker image using native binary"
+                                    dir('hello'){
+                                        sh 'docker build -f src/main/docker/Dockerfile.native -t rafabene/ms4demo:java .'
                                     }
                                 }
                             }
