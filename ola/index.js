@@ -38,8 +38,7 @@ function root (req, res, next){
     const headers = {};
 
     tracer.inject(req.span, FORMAT_HTTP_HEADERS, headers);
-    console.log(req.span._spanContext)
-
+    console.log(req.span.context())
     if (misbehave) {
         res.status(503).send(`Ola ${version} FAILS(503) from "${os.hostname}"`)
     } else {

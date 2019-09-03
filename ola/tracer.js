@@ -21,7 +21,7 @@ const options = {
     },
 }
 let tracer = initTracerFromEnv(config, options)
-let codec = new ZipkinB3TextMapCodec({ urlEncoding: true });
+let codec = new ZipkinB3TextMapCodec({ urlEncoding: true});
 tracer.registerInjector(FORMAT_HTTP_HEADERS, codec);
 tracer.registerExtractor(FORMAT_HTTP_HEADERS, codec);
 module.exports = tracer

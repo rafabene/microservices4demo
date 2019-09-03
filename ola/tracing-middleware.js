@@ -5,7 +5,7 @@ module.exports = function(req, res, next) {
   // set parent context if needed
   const parentSpanContext = tracer.extract(FORMAT_HTTP_HEADERS, req.headers);
   req.span = tracer.startSpan(`${req.method}: ${req.path}`, {
-    childOf: parentSpanContext,
+    childOf: parentSpanContext
   })
 
   res.on('finish', function() {
