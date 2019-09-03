@@ -21,29 +21,28 @@ app.get('/health', function (req, res){
 app.get('/', [logHeaders, root, trace])
 
 app.get('/misbehave', function(request, response) {
-    misbehave = true;
-    response.send("Following requests to '/' will return a 503\n");
+    misbehave = true
+    response.send("Following requests to '/' will return a 503\n")
 });
 
 app.get ('/behave', function(request, response) {
-    misbehave = false;
-    response.send("Following requests to '/' will return a 200\n");
+    misbehave = false
+    response.send("Following requests to '/' will return a 200\n")
 });
 
 function trace(req, res){
     // set parent context if needed
-    const parentSpanContext = tracer.extract(FORMAT_HTTP_HEADERS, req.headers);
+    const parentSpanContext = tracer.extract(FORMAT_HTTP_HEADERS, req.headers)
     req.span = tracer.startSpan(`${req.method}: ${req.path}`, {
         childOf: parentSpanContext,
-    });
+    })
 
-    res.on('finish', function() {
-        req.span.setTag(Tags.HTTP_STATUS_CODE, res.statusCode);    
-        // check HTTP status code
-        req.span.setTag(Tags.ERROR, ((res.statusCode >= 500 ) ? true : false));
-        // close the span
-        req.span.finish();
-      });
+    req.span.setTag(Tags.HTTP_STATUS_CODE, res.statusCode);   
+    // check HTTP status code
+    req.span.setTag(Tags.ERROR, ((res.statusCode >= 500 ) ? true : false))
+    // close the span
+    req.span.finish()
+    
 }
 
 function logHeaders(req, res, next){
