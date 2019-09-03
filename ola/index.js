@@ -40,13 +40,13 @@ function trace(req, res){
     req.span = tracer.startSpan(`${req.method}: ${req.path}`, {
         childOf: parentSpanContext,
     })
+    tracer.inject(req.span, FORMAT_HTTP_HEADERS, {});
 
     req.span.setTag(Tags.HTTP_STATUS_CODE, res.statusCode);   
     // check HTTP status code
     req.span.setTag(Tags.ERROR, ((res.statusCode >= 500 ) ? true : false))
     // close the span
     req.span.finish()
-    tracer.inject(req.span, FORMAT_HTTP_HEADERS, {});
     console.log(req.span._spanContext)
 }
 
