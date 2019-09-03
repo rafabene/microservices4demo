@@ -1,6 +1,6 @@
 const express = require('express')
-const initTracerFromEnv = require('jaeger-client').initTracerFromEnv;
-const { Tags, FORMAT_HTTP_HEADERS } = require('opentracing');
+const {initTracerFromEnv, ZipkinB3TextMapCodec} = require('jaeger-client')
+const { Tags, FORMAT_HTTP_HEADERS } = require('opentracing')
 const app = express()
 const port = 3000
 const os = require('os')
@@ -13,7 +13,11 @@ let tracer = initTracerFromEnv({
     }, { 
         logger: console,
     });
-  
+
+let codec = new ZipkinB3TextMapCodec({ urlEncoding: true });
+tracer.registerInjector(FORMAT_HTTP_HEADERS, codec);
+tracer.registerExtractor(FORMAT_HTTP_HEADERS, codec);
+
 app.get('/health', function (req, res){
     res.json({status: 'UP'})
 })
