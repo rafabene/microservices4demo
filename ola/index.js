@@ -37,7 +37,6 @@ app.get ('/behave', function(request, response) {
 function trace(req, res){
     // set parent context if needed
     const parentSpanContext = tracer.extract(FORMAT_HTTP_HEADERS, req.headers)
-    console.log(parentSpanContext)
     req.span = tracer.startSpan(`${req.method}: ${req.path}`, {
         childOf: parentSpanContext,
     })
@@ -47,7 +46,8 @@ function trace(req, res){
     req.span.setTag(Tags.ERROR, ((res.statusCode >= 500 ) ? true : false))
     // close the span
     req.span.finish()
-    
+    tracer.inject(req.span, FORMAT_HTTP_HEADERS, {});
+    console.log(req.span._spanContext)
 }
 
 function logHeaders(req, res, next){
