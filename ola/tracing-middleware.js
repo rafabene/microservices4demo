@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
   const parentSpanContext = tracer.extract(FORMAT_HTTP_HEADERS, req.headers);
   req.span = tracer.startSpan(`${req.method}: ${req.path}`, {
     childOf: parentSpanContext,
-  });
+  })
 
   res.on('finish', function() {
     req.span.setTag(Tags.HTTP_STATUS_CODE, res.statusCode);    
