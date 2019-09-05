@@ -1,8 +1,8 @@
 FROM node:10-alpine
-ENV JAEGER_ENDPOINT=http://jaeger-collector.istio-system.svc:14268/api/traces\
+ENV JAEGER_ENDPOINT=http://jaeger-collector.istio-system.svc:14268/api/traces
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/
 
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
