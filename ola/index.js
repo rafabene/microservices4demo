@@ -1,4 +1,5 @@
-const tracer = require('./tracer');
+const tracer = require('./tracer')
+const kafka = require('./kafka-producer')
 const express = require('express')
 const tracingMiddleware = require('./tracing-middleware')
 const FORMAT_HTTP_HEADERS = require('opentracing').FORMAT_HTTP_HEADERS
@@ -39,12 +40,15 @@ function root (req, res, next){
 
     tracer.inject(req.span, FORMAT_HTTP_HEADERS, headers);
     console.log(req.span.context())
+    let msg = ''
     if (misbehave) {
-        res.status(503).send(`Ola ${version} FAILS(503) from "${os.hostname}"`)
+        msg = `Ola ${version} FAILS(503) from "${os.hostname}"`
+        res.status(503).send(msg)
     } else {
-        res.send(`Ola ${version} de "${os.hostname}": ${++cont}`)
+        msg = `Ola ${version} de "${os.hostname}": ${++cont}`
+        res.send(msg)
     }
+    kafka('test', msg);
     next()
 }
-
 app.listen(port, () => console.log(`Ola app listening on port ${port}!`))
