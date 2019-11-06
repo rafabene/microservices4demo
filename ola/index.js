@@ -1,5 +1,6 @@
 const tracer = require('./tracer')
 const kafka = require('./kafka-producer')
+const KAFKA_TOPIC = 'my-topic'
 const express = require('express')
 const tracingMiddleware = require('./tracing-middleware')
 const FORMAT_HTTP_HEADERS = require('opentracing').FORMAT_HTTP_HEADERS
@@ -7,6 +8,7 @@ const app = express()
 const port = 3000
 const os = require('os')
 const version = (process.env.VERSION == undefined ? "V1" : process.env.VERSION )
+
 
 let cont = 0
 let misbehave= false
@@ -48,7 +50,8 @@ function root (req, res, next){
         msg = `Ola ${version} de "${os.hostname}": ${++cont}`
         res.send(msg)
     }
-    kafka('test', msg);
+    kafka.send(KAFKA_TOPIC, msg);
     next()
 }
 app.listen(port, () => console.log(`Ola app listening on port ${port}!`))
+kafka.createTopic(KAFKA_TOPIC)

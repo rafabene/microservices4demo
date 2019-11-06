@@ -7,10 +7,28 @@ let kafka = require('kafka-node'),
 
 producer.on('error', function (err) {})        
 
-module.exports = function(topic, msg){
+module.exports = {
+    
+    send(topic, msg){
 
-    producer.send([{ topic: topic, messages: msg, partition: 0 },], function (err, data) {
-        data? console.log(data): false
-    })
+        producer.send([{ topic: topic, messages: msg, partition: 0 },], function (err, data) {
+            data? console.log(data): false
+        })
      
+    },
+
+    createTopic(topic){
+
+        let topicsToCreate = [{
+            topic: topic,
+            partitions: 1,
+            replicationFactor: 1
+        }]
+
+        client.createTopics(topicsToCreate, (error, result) => {
+            console.log(result)
+            // result is an array of any errors if a given topic could not be created
+          });
+
+    }
 }

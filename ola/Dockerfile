@@ -1,5 +1,6 @@
 FROM node:10-alpine
 ENV JAEGER_ENDPOINT=http://jaeger-collector.istio-system.svc:14268/api/traces
+ENV KAFKA_URL=my-cluster-kafka-brokers.kafka.svc:9092
 
 # Create app directory
 WORKDIR /usr/src/app/
