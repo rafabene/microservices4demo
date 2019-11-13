@@ -29,7 +29,9 @@ public class HelloResource {
     public Response hello() {
         try {
             String response = olaService.getOla();
-            return Response.ok(String.format(RESPONSE_STRING_FORMAT, response)).build();
+            String msg = String.format(RESPONSE_STRING_FORMAT, response);
+            logger.info(msg);
+            return Response.ok(msg).build();
         } catch (WebApplicationException ex) {
             Response response = ex.getResponse();
             logger.warn("Non HTTP 20x trying to get the response from recommendation service: " + response.getStatus());
