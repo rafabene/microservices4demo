@@ -9,7 +9,7 @@ metadata:
 spec:
   selector:
     app: ola
-  type: ClusterIP
+  type: NodePort
   ports:
   - protocol: TCP
     name: http-3000
