@@ -22,7 +22,7 @@ var options = {
     password: 'mypassword',
     database: 'session'
 }
-var sessionStore = new MySQLStore()
+var sessionStore = new MySQLStore(options)
 console.log('sessionStore configured as ' + JSON.stringify(options))
 
 app.use(session({
