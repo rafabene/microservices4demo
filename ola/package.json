@@ -11,6 +11,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "express": "^4.17.1",
+    "express-mysql-session": "^2.1.0",
+    "express-session": "^1.17.0",
     "jaeger-client": "^3.16.0",
     "kafka-node": "^5.0.0",
     "opentracing": "^0.14.4",
