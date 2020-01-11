@@ -15,13 +15,15 @@ const version = (process.env.VERSION == undefined ? "V1" : process.env.VERSION )
 let cont = 0
 let misbehave= false
 
-var sessionStore = new MySQLStore({
+var options = {
     host: (process.env.MYSQL_HOST == undefined ? "localhost" : process.env.MYSQL_HOST),
     port: 3306,
     user: 'myuser',
     password: 'mypassword',
     database: 'session'
-})
+}
+var sessionStore = new MySQLStore()
+console.log('sessionStore configured as ' + JSON.stringify(options))
 
 app.use(session({
     secret: 'keyboard cat',
