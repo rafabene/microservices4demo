@@ -14,10 +14,10 @@ let cont = 0
 let misbehave= false
 let sessionStore = null
 
-if (process.env.MYSQL_HOST == 'undefined' ){
-    console.log(`variable MYSQL_HOST set as ${process.env.MYSQL_HOST}`) 
+console.log(`variable MYSQL_HOST set as ${process.env.MYSQL_HOST}`) 
+if (typeof process.env.MYSQL_HOST !== 'undefined' ){
     var options = {
-        host: (process.env.MYSQL_HOST == 'undefined' ? "localhost" : process.env.MYSQL_HOST),
+        host: (process.env.MYSQL_HOST),
         port: 3306,
         user: 'myuser',
         password: 'mypassword',
@@ -32,7 +32,7 @@ if (process.env.MYSQL_HOST == 'undefined' ){
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
-    store: (process.env.MYSQL_HOST == 'undefined' ? null : sessionStore),
+    store: (typeof process.env.MYSQL_HOST === 'undefined' ? null : sessionStore),
     saveUninitialized: false,
 }))
 
