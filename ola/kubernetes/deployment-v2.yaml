@@ -25,6 +25,8 @@ spec:
         env:
         - name: VERSION
           value: "V2"
+        - name: DEBUG
+          value: "express-mysql-session*"
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000

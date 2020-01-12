@@ -20,7 +20,8 @@ var options = {
     port: 3306,
     user: 'myuser',
     password: 'mypassword',
-    database: 'session'
+    database: 'session',
+    createDatabaseTable: true,
 }
 var sessionStore = new MySQLStore(options)
 console.log('sessionStore configured as ' + JSON.stringify(options))
