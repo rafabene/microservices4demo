@@ -21,7 +21,7 @@ var options = {
     user: 'myuser',
     password: 'mypassword',
     database: 'session',
-    createDatabaseTable: true,
+    createDatabaseTable: true
 }
 var sessionStore = new MySQLStore(options)
 console.log('sessionStore configured as ' + JSON.stringify(options))
@@ -30,7 +30,7 @@ app.use(session({
     secret: 'keyboard cat',
     resave: false,
     store: (process.env.MYSQL_HOST == undefined ? null : sessionStore),
-    saveUninitialized: true,
+    saveUninitialized: false,
 }))
 
 app.use(tracingMiddleware);
