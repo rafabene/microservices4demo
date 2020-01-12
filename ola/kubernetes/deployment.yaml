@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ola-v1
+  namespace: microservices
   labels:
     app: ola
     version: v1
