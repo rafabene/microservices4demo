@@ -23,10 +23,10 @@ spec:
       - name: ola
         image: rafabene/ms4demo:node
         env:
-          - name: VERSION
-            value: "V1"
-          - name: DEBUG
-            value: "express-mysql-session*"
+        - name: VERSION
+          value: "V1"
+        - name: DEBUG
+          value: "express-mysql-session*"
           imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
