@@ -1,7 +1,6 @@
 kind: Service
 apiVersion: v1
 metadata:
-  namespace: microservices
   name: ola
   labels:
     app: ola
