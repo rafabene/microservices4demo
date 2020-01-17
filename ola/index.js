@@ -46,11 +46,11 @@ app.get('/session/add/:name', function(request, response) {
     let name = request.params.name
     request.session[name] = name
     console.log(`${name} added to Session`)
-    response.send(request.session)
+    response.send(`Ola ${version} de "${os.hostname} - ` + JSON.stringify(request.session))
 })
 
 app.get('/session/get', function(request, response) {
-    response.send(request.session)
+    response.send(`Ola ${version} de "${os.hostname} - ` + JSON.stringify(request.session))
 })
 
 app.get('/', [logHeaders, root])
