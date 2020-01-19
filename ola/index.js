@@ -5,6 +5,7 @@ const express = require('express')
 const session = require('express-session')
 const tracingMiddleware = require('./tracing-middleware')
 const FORMAT_HTTP_HEADERS = require('opentracing').FORMAT_HTTP_HEADERS
+const myrequest = require('request')
 const app = express()
 const port = 3000
 const os = require('os')
@@ -54,6 +55,14 @@ app.get('/session/get', function(request, response) {
 })
 
 app.get('/', [logHeaders, root])
+
+app.get('/getnow', function(request, response) {
+    myrequest('http://worldclockapi.com/api/json/cet/now', { json: true }, (err, res, body) => {
+        if (err) { return console.log(err) }
+        console.log(body)
+        response.send(body)
+    });
+});
 
 app.get('/misbehave', function(request, response) {
     misbehave = true
