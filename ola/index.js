@@ -57,7 +57,7 @@ app.get('/session/get', function(request, response) {
 app.get('/', [logHeaders, root])
 
 app.get('/getnow', function(request, response) {
-    myrequest('http://worldclockapi.co/api/json/cet/now', { json: true }, (err, res, body) => {
+    myrequest('http://worldclockapi.com/api/json/cet/now', { json: true }, (err, res, body) => {
         if (err) {
             console.log(err)
             response.status(502).send(err)
