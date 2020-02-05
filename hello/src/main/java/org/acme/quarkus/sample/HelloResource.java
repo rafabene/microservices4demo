@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 @Path("/")
 public class HelloResource {
 
-    private static final String RESPONSE_STRING_FORMAT = "Hello V1 => %s\n";
+    private static final String RESPONSE_STRING_FORMAT = "Hello => %s\n";
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
