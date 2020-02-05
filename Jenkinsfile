@@ -25,9 +25,6 @@ spec:
       path: /vagrant/m2
 """)
     }
-    triggers {
-        cron('*/1 * * * *')
-    }
     parameters {
         choice(name: 'JAVA_BUILD_TYPE', choices: ['JVM', 'Native'], description: 'Type of Quarkus build?')
     }
