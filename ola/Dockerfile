@@ -1,4 +1,4 @@
-FROM node:10-alpine
+FROM node:10.19.0-jessie
 ENV JAEGER_ENDPOINT=http://jaeger-collector.istio-system.svc:14268/api/traces
 ENV KAFKA_URL=my-cluster-kafka-brokers.kafka.svc:9092
 
