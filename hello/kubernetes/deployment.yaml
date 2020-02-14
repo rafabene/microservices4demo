@@ -19,6 +19,7 @@ spec:
       containers:
       - name: hello
         image: rafabene/ms4demo:java
+        imagePullPolicy: Always
         env:
         - name: org_acme_quarkus_sample_OlaService_mp_rest_url
           value: "http://ola:3000"
