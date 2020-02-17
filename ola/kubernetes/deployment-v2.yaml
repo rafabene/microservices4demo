@@ -28,7 +28,6 @@ spec:
           value: "V2"
         - name: DEBUG
           value: "express-mysql-session*"
-        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
           name: http-3000
