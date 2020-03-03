@@ -22,7 +22,7 @@ spec:
       containers:
       - name: ola
         image: rafabene/ms4demo:node
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         env:
         - name: VERSION
           value: "V2"
