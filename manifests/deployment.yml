@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "test-7c31"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "test-7c31"
+  template:
+    metadata:
+      labels:
+        app: "test-7c31"
+    spec:
+      containers:
+        - name: "test-7c31"
+          image: "benevidesazure.azurecr.io/test"
+          ports:
+          - containerPort: 8080

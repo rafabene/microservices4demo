@@ -5,6 +5,8 @@ pipeline{
 apiVersion: v1
 kind: Pod
 spec:
+  nodeSelector:
+    "beta.kubernetes.io/os": "linux"
   containers:
   - name: slave
     image: rafabene/jenkins-slave
