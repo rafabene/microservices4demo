@@ -10,7 +10,7 @@
   "author": "Rafael Benevides",
   "license": "Apache-2.0",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-mysql-session": "^2.1.0",
     "express-session": "^1.17.0",
     "jaeger-client": "^3.16.0",
